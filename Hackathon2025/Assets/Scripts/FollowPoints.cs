@@ -1,10 +1,13 @@
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class FollowPoints : MonoBehaviour
 {
     public float speed;
-    public Transform[] points;
+    public List<Transform> points = new List<Transform>();
+    
     Transform currentPoint;
     int currentIndex = 0;
     
@@ -21,7 +24,7 @@ public class FollowPoints : MonoBehaviour
     void Update()
     {
         if(CAN_MOVE) {
-            if(transform.transform.position != points[points.Length - 1].position) {
+            if(transform.transform.position != points[points.Count - 1].position) {
                 if(Vector2.Distance(transform.position, currentPoint.position) <= 0) {
                     currentIndex++;
                     currentPoint = points[currentIndex];

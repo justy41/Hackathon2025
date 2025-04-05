@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &431697735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 210788173780171894, guid: 5559381bafa4c06409f6909738761684, type: 3}
+  m_PrefabInstance: {fileID: 8677392959090463540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +293,7 @@ MonoBehaviour:
   canBuild: 0
   lineMaterial: {fileID: 2100000, guid: eff72263380704445a935b3cc4de887f, type: 2}
   lineWidth: 0.1
+  car: {fileID: 431697735}
 --- !u!4 &679379378
 Transform:
   m_ObjectHideFlags: 0

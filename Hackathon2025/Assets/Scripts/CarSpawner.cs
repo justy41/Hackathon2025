@@ -6,7 +6,7 @@ public class CarSpawner : MonoBehaviour
     public GameObject car;
     float spawnTimer;
     public float spawnTimerValue;
-    public Transform[] points;
+    public List<Transform> points = new List<Transform>();
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
