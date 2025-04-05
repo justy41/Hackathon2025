@@ -363,6 +363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373205327c572cc4b9485606a4b559da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineMaterial: {fileID: 2100000, guid: eff72263380704445a935b3cc4de887f, type: 2}
+  lineWidth: 0.1
 --- !u!4 &679379378
 Transform:
   m_ObjectHideFlags: 0

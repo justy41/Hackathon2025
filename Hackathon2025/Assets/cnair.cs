@@ -1,47 +1,41 @@
-using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Transactions;
-using Unity.Collections;
-using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.U2D;
 
 public class cnair : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created 
-    
-    [SerializeField] LineRenderer lineRenderer;
-    private UnityEngine.Vector2 mp;
-    private bool start = false;
+    public Material lineMaterial;
+    public float lineWidth = 0.1f;
+
+    private LineRenderer lineRenderer;
+    private List<Vector3> points = new List<Vector3>();
+
     void Start()
     {
+        // Create a new GameObject and add LineRenderer at runtime
+        GameObject lineObj = new GameObject("DynamicLine");
+        lineRenderer = lineObj.AddComponent<LineRenderer>();
+        lineRenderer.material = lineMaterial;
+        lineRenderer.widthMultiplier = lineWidth;
+        lineRenderer.positionCount = 0;
         lineRenderer.useWorldSpace = true;
     }
 
-    public List<UnityEngine.Vector3> pozitii = new List<UnityEngine.Vector3>();
-    int cnt = 0;
-
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)) {
-            if(start == false) {
-                start = true;
-                mp = Input.mousePosition;
-                UnityEngine.Vector3 sp = Camera.main.ScreenToWorldPoint(mp);
-                sp.z = 0f;
-                pozitii.Add(sp);
-            } else {
-                mp = Input.mousePosition;
-                UnityEngine.Vector3 sp = Camera.main.ScreenToWorldPoint(mp);
-                sp.z = 0f;
-                pozitii.Add(sp);
-                
-            }
+        if (Input.GetMouseButtonDown(0)) // Left click
+        {
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = 10f; // Distance from camera
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+
+            AddPoint(worldPos);
         }
+    }
+
+    void AddPoint(Vector3 point)
+    {
+        points.Add(point);
+        lineRenderer.positionCount = points.Count;
+        lineRenderer.SetPosition(points.Count - 1, point);
     }
 }
