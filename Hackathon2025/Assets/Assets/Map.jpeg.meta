@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 671e7f75fd56bee4baf54f216b0af8eb
+guid: 9ef4c2cce92528d4ca40b312ccb089dd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1097576577763942635
-    second: hammer-3d-icon-png_0
+      213: 645411862609229670
+    second: Map_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hammer-3d-icon-png_0
+      name: Map_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 14
-        width: 336
-        height: 362
+        x: 0
+        y: 0
+        width: 2048
+        height: 1447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be0a86f05106b3f00800000000000000
-      internalID: 1097576577763942635
+      spriteID: 66775a46ba6f4f800800000000000000
+      internalID: 645411862609229670
       vertices: []
       indices: 
       edges: []
@@ -138,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      hammer-3d-icon-png_0: 1097576577763942635
+      Map_0: 645411862609229670
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
