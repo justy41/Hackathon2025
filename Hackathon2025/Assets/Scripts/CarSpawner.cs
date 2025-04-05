@@ -19,8 +19,10 @@ public class CarSpawner : MonoBehaviour
     void Update()
     {
         spawnTimer -= Time.deltaTime;
-        if(spawnTimer <= 0) {
-            Instantiate(car, transform.position, Quaternion.identity);
+        if (spawnTimer <= 0 && car.GetComponent<FollowPoints>().CAN_MOVE)
+        {
+            GameObject spawnedCar = Instantiate(car, transform.position, Quaternion.identity);
+            spawnedCar.GetComponent<FollowPoints>().points = new List<Transform>(points); // Make a copy if needed
             spawnTimer = spawnTimerValue;
         }
     }

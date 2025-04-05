@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class cnair : MonoBehaviour
@@ -9,14 +8,12 @@ public class cnair : MonoBehaviour
     public float lineWidth = 0.1f;
 
     private LineRenderer lineRenderer;
-    private List<Vector3> points = new List<Vector3>();
-
+    [SerializeField] Transform punct;
     [SerializeField] GameObject car;
-    FollowPoints fp;
 
     void Start()
     {
-        fp = car.GetComponent<FollowPoints>();
+        InitializeLineRenderer(); // Initialize the LineRenderer
     }
 
     void Update()
@@ -24,45 +21,41 @@ public class cnair : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && canBuild)
         {
             Vector3 mousePos = Input.mousePosition;
-            mousePos.z = 10f;
+            mousePos.z = 10f; // Ensure the Z-position is properly set for 2D space
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
 
             if (worldPos.y > -3.38f)
             {
-                AddPoint(worldPos);
-
-                // Create a new empty GameObject for the follow point
-                GameObject pointObj = new GameObject("FollowPoint");
-                pointObj.transform.position = new Vector3(worldPos.x, worldPos.y, 0f);
-
-                // Add to car's follow points list (append)
-                fp.points.Add(pointObj.transform);
+                AddPoint(worldPos); // Add point to the LineRenderer
             }
         }
     }
 
     void AddPoint(Vector3 point)
     {
-        points.Add(point);
-        lineRenderer.positionCount = points.Count;
-        lineRenderer.SetPosition(points.Count - 1, point);
+        // If the LineRenderer already has points, add the new point
+        int pointCount = lineRenderer.positionCount;
+        lineRenderer.positionCount = pointCount + 1;
+        lineRenderer.SetPosition(pointCount, point); // Set the new point at the end
     }
 
-    public void NewRoadPoints()
+    public void InitializeLineRenderer()
     {
-        points.Clear();
-
-        GameObject lineObj = new GameObject("DynamicLine");
-        lineRenderer = lineObj.AddComponent<LineRenderer>();
-        lineRenderer.material = lineMaterial;
-        lineRenderer.widthMultiplier = lineWidth;
-        lineRenderer.positionCount = 0;
-        lineRenderer.useWorldSpace = true;
-
+        // Only create the LineRenderer if it's not already initialized
+        if (lineRenderer == null)
+        {
+            GameObject lineObj = new GameObject("DynamicLine");
+            lineRenderer = lineObj.AddComponent<LineRenderer>();
+            lineRenderer.material = lineMaterial;
+            lineRenderer.widthMultiplier = lineWidth;
+            lineRenderer.positionCount = 0; // No points initially
+            lineRenderer.useWorldSpace = true;
+        }
     }
 
     public void Toggle()
     {
         canBuild = !canBuild;
+        car.GetComponent<FollowPoints>().points[1] = punct;
     }
 }
